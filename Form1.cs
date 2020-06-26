@@ -18,6 +18,7 @@ namespace FinalApp
         }
 
         public void t(){
+            AutoScaleDimensions;
         }
     }
 }
