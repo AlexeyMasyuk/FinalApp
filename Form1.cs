@@ -16,5 +16,8 @@ namespace FinalApp
         {
             InitializeComponent();
         }
+
+        public void t(){
+        }
     }
 }
