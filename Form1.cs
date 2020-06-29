@@ -38,17 +38,14 @@ namespace FinalApp
 
         private void customerBtn_Click(object sender, EventArgs e)
         {
-            Form1.ActiveForm.Visible = false;
+            Form1.ActiveForm.Hide();
             using (Form2 form2 = new Form2())
             {
-                form2.products = dataB.GetProducts();
-                
+                form2.products = dataB.GetProducts();               
                 form2.ShowDialog();
-                
-
-                Form1 form1 = new Form1();
-                form1.ShowDialog();
+                Form1.ActiveForm.Show();
             }
+            
         }
     }
 }
