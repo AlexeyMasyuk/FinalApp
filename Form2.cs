@@ -27,8 +27,8 @@ namespace FinalApp
         {
 
             dgv.RowCount = products.Length + 1;
-            /*dgv.ColumnCount = 3;*/
-            tbl();
+            dgv.ColumnCount = 3;
+            tableTitleSet();
             tableSet(products[0].Name, products[0].Price, products[0].Category, products[0].Image, 1);
             tableSet(products[1].Name, products[1].Price, products[1].Category, products[1].Image, 2);
         }
@@ -41,7 +41,7 @@ namespace FinalApp
             dgv[1, index].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv[2, index].Value = category;
             dgv[2, index].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            
             Image image1 = Image.FromFile(Application.StartupPath + @"\..\..\DBpics\tvPic.jpg");
             dgv[3, index].Value = image;
 
@@ -51,11 +51,11 @@ namespace FinalApp
         {
             DataGridViewColumn col = new DataGridViewColumn();
             col.HeaderText = "Name";
-            dgv.Columns.Insert(0, col);
+            dgv[0, 0].Value = col;
             col.HeaderText = "Price";
-            dgv.Columns.Insert(1, col);
+            dgv[1, 0].Value = col;
             col.HeaderText = "Category";
-            dgv.Columns.Insert(2, col);
+            dgv[2, 0].Value = col;
             DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
             imageCol.HeaderText = "Image";
             dgv.Columns.Add(imageCol);
@@ -71,7 +71,9 @@ namespace FinalApp
             dgv[2, 0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
             imageCol.HeaderText = "Image";
-            dgv.Columns.Add(imageCol);            
+            dgv.Columns.Add(imageCol);
+            dgv[3, 0] = new DataGridViewTextBoxCell();
+            dgv[3, 0].Value = "Image";
         }
     }
 }

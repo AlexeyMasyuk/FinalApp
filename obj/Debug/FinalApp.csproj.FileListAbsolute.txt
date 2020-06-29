@@ -8,3 +8,13 @@ C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.Properties.Reso
 C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.csproj.GenerateResource.cache
 C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.exe
 C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.pdb
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\FinalApp.exe.config
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\FinalApp.exe
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\FinalApp.pdb
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.csprojAssemblyReference.cache
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.Form1.resources
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.Form2.resources
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.Properties.Resources.resources
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.csproj.GenerateResource.cache
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.exe
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.pdb
