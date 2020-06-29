@@ -1,0 +1,10 @@
+C:\Users\amasyuk\source\repos\FinalApp-master\bin\Debug\FinalApp.exe.config
+C:\Users\amasyuk\source\repos\FinalApp-master\bin\Debug\FinalApp.exe
+C:\Users\amasyuk\source\repos\FinalApp-master\bin\Debug\FinalApp.pdb
+C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.csprojAssemblyReference.cache
+C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.Form1.resources
+C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.Form2.resources
+C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.Properties.Resources.resources
+C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.csproj.GenerateResource.cache
+C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.exe
+C:\Users\amasyuk\source\repos\FinalApp-master\obj\Debug\FinalApp.pdb

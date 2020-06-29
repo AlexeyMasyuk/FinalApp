@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DBclassHWado.net;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +14,41 @@ namespace FinalApp
 {
     public partial class Form1 : Form
     {
+        private DBSQL dataB;
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        public void t(){
-            AutoScaleDimensions;
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            string dbPath = Application.StartupPath + @"\..\..\shop.accdb";
+            if (File.Exists(dbPath))
+            {
+                DBSQL.ConnectionString = dbPath;
+                dataB = DBSQL.Instance;
+            }
+            else     // if DB file not exist
+            {
+                MessageBox.Show("DataBase" + dbPath + " not found");
+                Application.Exit();
+            }
+        }
+
+        private void customerBtn_Click(object sender, EventArgs e)
+        {
+            Form1.ActiveForm.Visible = false;
+            using (Form2 form2 = new Form2())
+            {
+                form2.products = dataB.GetProducts();
+                
+                form2.ShowDialog();
+                
+
+                Form1 form1 = new Form1();
+                form1.ShowDialog();
+            }
         }
     }
 }
