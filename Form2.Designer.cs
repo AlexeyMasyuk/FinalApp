@@ -29,36 +29,75 @@
         private void InitializeComponent()
         {
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.cartList = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.price = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv
             // 
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.Location = new System.Drawing.Point(0, 0);
+            this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 62;
             this.dgv.RowTemplate.Height = 28;
-            this.dgv.Size = new System.Drawing.Size(800, 450);
+            this.dgv.Size = new System.Drawing.Size(568, 460);
             this.dgv.TabIndex = 0;
+            this.dgv.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgv_CellDoubleClick);
+            // 
+            // cartList
+            // 
+            this.cartList.HideSelection = false;
+            this.cartList.Location = new System.Drawing.Point(574, 0);
+            this.cartList.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.cartList.Name = "cartList";
+            this.cartList.Size = new System.Drawing.Size(153, 224);
+            this.cartList.TabIndex = 1;
+            this.cartList.UseCompatibleStateImageBehavior = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(578, 237);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 17);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Total Price: ";
+            // 
+            // price
+            // 
+            this.price.AutoSize = true;
+            this.price.Location = new System.Drawing.Point(681, 237);
+            this.price.Name = "price";
+            this.price.Size = new System.Drawing.Size(0, 21);
+            this.price.TabIndex = 3;
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(819, 460);
+            this.Controls.Add(this.price);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cartList);
             this.Controls.Add(this.dgv);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.ListView cartList;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label price;
     }
 }

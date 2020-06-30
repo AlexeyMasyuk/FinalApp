@@ -18,6 +18,7 @@ namespace FinalApp
     public partial class Form2 : Form
     {
         public Product[] products;
+        private int cartSum;
         public Form2()
         {
             InitializeComponent();
@@ -40,10 +41,11 @@ namespace FinalApp
             dgv[2, index].Value = category;
             dgv[3, index].Value = image;
             dgv.RowTemplate.Resizable = DataGridViewTriState.True;
-            dgv.RowTemplate.Height = 100;
-            dgv.Columns[index].Width = 100;
-            
-            for (int i=0;i<3;i++)
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+
+            for (int i = 0; i < 3; i++)
                 dgv[i, index].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
@@ -61,14 +63,38 @@ namespace FinalApp
             string[] titles = { "Name", "Price", "Category", "Image" };
             for(int i = 0; i < 4; i++)
             {
+
                 if (i == 3)
                 {
                     addImgCol_changeTitleCell(i);
                     break;
                 }
-                dgv[i, 0].Value = titles[i];
-                dgv[i, 0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                else
+                {
+                    dgv[i, 0].Value = titles[i];
+                    dgv[i, 0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                dgv.Columns[i].Name = titles[i];
             }
-        }       
+        }
+
+        private void dgv_CellDoubleClick(object sender, MouseEventArgs e)
+        {
+            int selectedrowindex = dgv.SelectedCells[0].RowIndex;
+            string selected = dgv.Rows[selectedrowindex].Cells["Price"].Value.ToString();
+            cartList.Items.Add(dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString());
+            cartList.Items.Add(selected);
+
+            int tmp = 0;
+            Int32.TryParse(selected, out tmp);
+            cartSum += tmp;
+            price.Text = cartSum.ToString();
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
