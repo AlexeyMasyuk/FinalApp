@@ -43,9 +43,8 @@ namespace FinalApp
             {
                 form2.products = dataB.GetProducts();               
                 form2.ShowDialog();
-                Form1.ActiveForm.Show();
-            }
-            
+                Visible = true;
+            }           
         }
     }
 }

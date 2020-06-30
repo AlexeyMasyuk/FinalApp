@@ -35,9 +35,10 @@
             // 
             // customerBtn
             // 
-            this.customerBtn.Location = new System.Drawing.Point(36, 26);
+            this.customerBtn.Location = new System.Drawing.Point(70, 38);
+            this.customerBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.customerBtn.Name = "customerBtn";
-            this.customerBtn.Size = new System.Drawing.Size(94, 68);
+            this.customerBtn.Size = new System.Drawing.Size(106, 85);
             this.customerBtn.TabIndex = 0;
             this.customerBtn.Text = "Customer";
             this.customerBtn.UseVisualStyleBackColor = true;
@@ -45,24 +46,26 @@
             // 
             // supplierBtn
             // 
-            this.supplierBtn.Location = new System.Drawing.Point(36, 120);
+            this.supplierBtn.Location = new System.Drawing.Point(70, 194);
             this.supplierBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.supplierBtn.Name = "supplierBtn";
-            this.supplierBtn.Size = new System.Drawing.Size(94, 71);
+            this.supplierBtn.Size = new System.Drawing.Size(106, 89);
             this.supplierBtn.TabIndex = 1;
             this.supplierBtn.Text = "Supplier";
             this.supplierBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(173, 233);
+            this.ClientSize = new System.Drawing.Size(257, 368);
             this.Controls.Add(this.supplierBtn);
             this.Controls.Add(this.customerBtn);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+           
             this.ResumeLayout(false);
 
         }

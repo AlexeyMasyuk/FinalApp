@@ -39,9 +39,14 @@ namespace FinalApp
             dgv[1, index].Value = price;
             dgv[2, index].Value = category;
             dgv[3, index].Value = image;
-            for(int i=0;i<3;i++)
+            dgv.RowTemplate.Resizable = DataGridViewTriState.True;
+            dgv.RowTemplate.Height = 100;
+            dgv.Columns[index].Width = 100;
+            
+            for (int i=0;i<3;i++)
                 dgv[i, index].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
+
 
         private void addImgCol_changeTitleCell(int index)
         {
@@ -64,6 +69,6 @@ namespace FinalApp
                 dgv[i, 0].Value = titles[i];
                 dgv[i, 0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-        }
+        }       
     }
 }
