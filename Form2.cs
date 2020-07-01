@@ -19,6 +19,7 @@ namespace FinalApp
     {
         public Product[] products;
         private int cartSum;
+
         public Form2()
         {
             InitializeComponent();
@@ -26,7 +27,6 @@ namespace FinalApp
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
             dgv.RowCount = products.Length ;
             dgv.ColumnCount = 3;
             tableTitleSet();
@@ -54,8 +54,6 @@ namespace FinalApp
         {
             DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
             dgv.Columns.Add(imageCol);
-           /* dgv[index, 0] = new DataGridViewTextBoxCell();*/
-            /*dgv[index, 0].Value = "Image";*/
         }
 
         private void tableTitleSet()
@@ -63,54 +61,63 @@ namespace FinalApp
             string[] titles = { "Name", "Price", "Category", "Image" };
             for(int i = 0; i < 4; i++)
             {
-
                 if (i == 3)
                     addImgCol_changeTitleCell(i);
                 else
-                {
-                    /*dgv[i, 0].Value = titles[i];*/
                     dgv[i, 0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
                 dgv.Columns[i].Name = titles[i];
             }
         }
 
-        private void dgv_CellDoubleClick(object sender, MouseEventArgs e)
+        private void cartPriceUpdate(string numStr, bool plus)
         {
-            int selectedrowindex = dgv.SelectedCells[0].RowIndex;
-            string selected = dgv.Rows[selectedrowindex].Cells["Price"].Value.ToString();
-            cartList.Items.Add((cartList.Items.Count / 3 + 1).ToString() + ". " + dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString());
-            cartList.Items.Add(selected + "₪");
-            cartList.Items.Add("X");
-
             int tmp = 0;
-            Int32.TryParse(selected, out tmp);
-            cartSum += tmp;
+            Int32.TryParse(numStr, out tmp);
+            if(plus)
+                cartSum += tmp;
+            else
+                cartSum -= tmp;
             price.Text = cartSum.ToString();
-
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void addToCart(string selectedPrice, int selectedrowindex)
         {
+            cartList.Items.Add((cartList.Items.Count / 3 + 1).ToString() + ". " + dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString());
+            cartList.Items.Add(selectedPrice + "₪");
+            cartList.Items.Add("X");
+        }
 
+        private void dgv_CellDoubleClick(object sender, MouseEventArgs e)
+        {
+            int selectedRowIndex = dgv.SelectedCells[0].RowIndex;
+            string selected = dgv.Rows[selectedRowIndex].Cells["Price"].Value.ToString();
+            cartPriceUpdate(selected, true);
+            addToCart(selected, selectedRowIndex);
+        }
+
+        private void removeFromCart()
+        {
+            cartList.Items.RemoveAt(cartList.SelectedItems[0].Index - 2);
+            cartList.Items.RemoveAt(cartList.SelectedItems[0].Index - 1);
+            cartList.Items.Remove(cartList.SelectedItems[0]);
         }
 
         private void cartList_Click(object sender, EventArgs e)
         {
             if (cartList.SelectedItems[0].Text.ToString() == "X")
             {
-                int tmp = 0, count = cartList.Items[cartList.SelectedItems[0].Index - 1].Text.ToString().Count() - 1;
-
+                int count = cartList.Items[cartList.SelectedItems[0].Index - 1].Text.ToString().Count() - 1;
                 string numStr = cartList.Items[cartList.SelectedItems[0].Index - 1].Text.ToString().Remove(count, 1);
-                Int32.TryParse(numStr, out tmp);
-                cartSum -= tmp;
-                price.Text = cartSum.ToString();
-                cartList.Items.RemoveAt(cartList.SelectedItems[0].Index - 2);
-                cartList.Items.RemoveAt(cartList.SelectedItems[0].Index - 1);
-                cartList.Items.Remove(cartList.SelectedItems[0]);
+                cartPriceUpdate(numStr, false);
+                removeFromCart();
             }
-               
         }
 
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            cartList.Items.Clear();
+            cartSum = 0;
+            price.Text = "";
+        }
     }
 }

@@ -32,6 +32,8 @@
             this.cartList = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.price = new System.Windows.Forms.Label();
+            this.buyBtn = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,11 +77,32 @@
             this.price.Size = new System.Drawing.Size(0, 17);
             this.price.TabIndex = 3;
             // 
+            // buyBtn
+            // 
+            this.buyBtn.Location = new System.Drawing.Point(578, 272);
+            this.buyBtn.Name = "buyBtn";
+            this.buyBtn.Size = new System.Drawing.Size(83, 31);
+            this.buyBtn.TabIndex = 4;
+            this.buyBtn.Text = "Buy";
+            this.buyBtn.UseVisualStyleBackColor = true;
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.Location = new System.Drawing.Point(684, 272);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(91, 31);
+            this.clearBtn.TabIndex = 5;
+            this.clearBtn.Text = "Clear Cart";
+            this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 460);
+            this.ClientSize = new System.Drawing.Size(817, 460);
+            this.Controls.Add(this.clearBtn);
+            this.Controls.Add(this.buyBtn);
             this.Controls.Add(this.price);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cartList);
@@ -100,5 +123,7 @@
         private System.Windows.Forms.ListView cartList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label price;
+        private System.Windows.Forms.Button buyBtn;
+        private System.Windows.Forms.Button clearBtn;
     }
 }
