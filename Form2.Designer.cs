@@ -53,9 +53,10 @@
             this.cartList.Location = new System.Drawing.Point(574, 0);
             this.cartList.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
             this.cartList.Name = "cartList";
-            this.cartList.Size = new System.Drawing.Size(153, 224);
+            this.cartList.Size = new System.Drawing.Size(213, 224);
             this.cartList.TabIndex = 1;
             this.cartList.UseCompatibleStateImageBehavior = false;
+            this.cartList.Click += new System.EventHandler(this.cartList_Click);
             // 
             // label1
             // 
@@ -71,7 +72,7 @@
             this.price.AutoSize = true;
             this.price.Location = new System.Drawing.Point(681, 237);
             this.price.Name = "price";
-            this.price.Size = new System.Drawing.Size(0, 21);
+            this.price.Size = new System.Drawing.Size(0, 17);
             this.price.TabIndex = 3;
             // 
             // Form2

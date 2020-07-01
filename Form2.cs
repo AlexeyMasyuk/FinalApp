@@ -27,11 +27,11 @@ namespace FinalApp
         private void Form2_Load(object sender, EventArgs e)
         {
 
-            dgv.RowCount = products.Length + 1;
+            dgv.RowCount = products.Length ;
             dgv.ColumnCount = 3;
             tableTitleSet();
-            tableSet(products[0].Name, products[0].Price, products[0].Category, products[0].Image, 1);
-            tableSet(products[1].Name, products[1].Price, products[1].Category, products[1].Image, 2);
+            tableSet(products[0].Name, products[0].Price, products[0].Category, products[0].Image, 0);
+            tableSet(products[1].Name, products[1].Price, products[1].Category, products[1].Image, 1);
         }
 
         private void tableSet(string name, string price, string category, Image image, int index )
@@ -54,8 +54,8 @@ namespace FinalApp
         {
             DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
             dgv.Columns.Add(imageCol);
-            dgv[index, 0] = new DataGridViewTextBoxCell();
-            dgv[index, 0].Value = "Image";
+           /* dgv[index, 0] = new DataGridViewTextBoxCell();*/
+            /*dgv[index, 0].Value = "Image";*/
         }
 
         private void tableTitleSet()
@@ -65,13 +65,10 @@ namespace FinalApp
             {
 
                 if (i == 3)
-                {
                     addImgCol_changeTitleCell(i);
-                    break;
-                }
                 else
                 {
-                    dgv[i, 0].Value = titles[i];
+                    /*dgv[i, 0].Value = titles[i];*/
                     dgv[i, 0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
                 dgv.Columns[i].Name = titles[i];
@@ -82,8 +79,9 @@ namespace FinalApp
         {
             int selectedrowindex = dgv.SelectedCells[0].RowIndex;
             string selected = dgv.Rows[selectedrowindex].Cells["Price"].Value.ToString();
-            cartList.Items.Add(dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString());
-            cartList.Items.Add(selected);
+            cartList.Items.Add((cartList.Items.Count / 3 + 1).ToString() + ". " + dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString());
+            cartList.Items.Add(selected + "₪");
+            cartList.Items.Add("X");
 
             int tmp = 0;
             Int32.TryParse(selected, out tmp);
@@ -96,5 +94,23 @@ namespace FinalApp
         {
 
         }
+
+        private void cartList_Click(object sender, EventArgs e)
+        {
+            if (cartList.SelectedItems[0].Text.ToString() == "X")
+            {
+                int tmp = 0, count = cartList.Items[cartList.SelectedItems[0].Index - 1].Text.ToString().Count() - 1;
+
+                string numStr = cartList.Items[cartList.SelectedItems[0].Index - 1].Text.ToString().Remove(count, 1);
+                Int32.TryParse(numStr, out tmp);
+                cartSum -= tmp;
+                price.Text = cartSum.ToString();
+                cartList.Items.RemoveAt(cartList.SelectedItems[0].Index - 2);
+                cartList.Items.RemoveAt(cartList.SelectedItems[0].Index - 1);
+                cartList.Items.Remove(cartList.SelectedItems[0]);
+            }
+               
+        }
+
     }
 }
