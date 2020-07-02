@@ -27,11 +27,10 @@ namespace FinalApp
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            dgv.RowCount = products.Length ;
-            dgv.ColumnCount = 3;
-            tableTitleSet();
+            tableSet();
             tableSet(products[0].Name, products[0].Price, products[0].Category, products[0].Image, 0);
             tableSet(products[1].Name, products[1].Price, products[1].Category, products[1].Image, 1);
+            cartHandler cart = new cartHandler(cartList);
         }
 
         private void tableSet(string name, string price, string category, Image image, int index )
@@ -56,8 +55,10 @@ namespace FinalApp
             dgv.Columns.Add(imageCol);
         }
 
-        private void tableTitleSet()
+        private void tableSet()
         {
+            dgv.RowCount = products.Length;
+            dgv.ColumnCount = 3;
             string[] titles = { "Name", "Price", "Category", "Image" };
             for(int i = 0; i < 4; i++)
             {
@@ -82,9 +83,12 @@ namespace FinalApp
 
         private void addToCart(string selectedPrice, int selectedrowindex)
         {
-            cartList.Items.Add((cartList.Items.Count / 3 + 1).ToString() + ". " + dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString());
-            cartList.Items.Add(selectedPrice + "₪");
+            string str = (cartList.Items.Count / 2 + 1).ToString() + ". " + dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString() + "  " + selectedPrice + "₪";
+            /*            cartList.Items.Add((cartList.Items.Count / 3 + 1).ToString() + ". " + dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString());
+                        cartList.Items.Add(selectedPrice + "₪");*/
+            cartList.Items.Add(str);
             cartList.Items.Add("X");
+            cartList.Items[cartList.Items.Count - 1].Tag = selectedPrice;
         }
 
         private void dgv_CellDoubleClick(object sender, MouseEventArgs e)
@@ -97,7 +101,6 @@ namespace FinalApp
 
         private void removeFromCart()
         {
-            cartList.Items.RemoveAt(cartList.SelectedItems[0].Index - 2);
             cartList.Items.RemoveAt(cartList.SelectedItems[0].Index - 1);
             cartList.Items.Remove(cartList.SelectedItems[0]);
         }
@@ -106,8 +109,7 @@ namespace FinalApp
         {
             if (cartList.SelectedItems[0].Text.ToString() == "X")
             {
-                int count = cartList.Items[cartList.SelectedItems[0].Index - 1].Text.ToString().Count() - 1;
-                string numStr = cartList.Items[cartList.SelectedItems[0].Index - 1].Text.ToString().Remove(count, 1);
+                string numStr = cartList.Items[cartList.SelectedItems[0].Index].Tag.ToString();
                 cartPriceUpdate(numStr, false);
                 removeFromCart();
             }
