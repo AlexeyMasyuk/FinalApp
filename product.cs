@@ -18,12 +18,16 @@ namespace FinalApp
         private string product_price;
         private Image product_image;
 
-        public Product(string name, string price, string category, string imagePath)
+        public Product(string name, string price, string category, string imagePath):this(name, price)
         {
-            Name = name;
-            Category = category;
-            Price = price;
             Image = strToImage(imagePath);
+            Category = category;
+        }
+
+        public Product(string name, string price)
+        {
+            Name = name;            
+            Price = price;
         }
 
         private Image strToImage(string imagePath)
@@ -71,5 +75,20 @@ namespace FinalApp
             }
         }
 
+        public static bool operator ==(Product p1, Product p2)
+        {
+            if (p1.Name.ToString() == p2.Name.ToString())
+                if (p1.Category.ToString() == p2.Category.ToString())
+                    if (p1.Price.ToString() == p2.Price.ToString())
+                        return true;
+            return false;
+        }
+
+        public static bool operator !=(Product p1, Product p2)
+        {
+            if (p1==p2)
+                return true;
+            return false;
+        }
     }
 }

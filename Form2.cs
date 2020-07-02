@@ -81,14 +81,9 @@ namespace FinalApp
             price.Text = cartSum.ToString();
         }
 
-        private void addToCart(string selectedPrice, int selectedrowindex)
+        private void addToCart()
         {
-            string str = (cartList.Items.Count / 2 + 1).ToString() + ". " + dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString() + "  " + selectedPrice + "₪";
-            /*            cartList.Items.Add((cartList.Items.Count / 3 + 1).ToString() + ". " + dgv.Rows[selectedrowindex].Cells["Name"].Value.ToString());
-                        cartList.Items.Add(selectedPrice + "₪");*/
-            cartList.Items.Add(str);
-            cartList.Items.Add("X");
-            cartList.Items[cartList.Items.Count - 1].Tag = selectedPrice;
+
         }
 
         private void dgv_CellDoubleClick(object sender, MouseEventArgs e)

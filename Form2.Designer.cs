@@ -41,21 +41,21 @@
             // 
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Location = new System.Drawing.Point(0, 0);
-            this.dgv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersWidth = 62;
             this.dgv.RowTemplate.Height = 28;
-            this.dgv.Size = new System.Drawing.Size(426, 374);
+            this.dgv.Size = new System.Drawing.Size(568, 460);
             this.dgv.TabIndex = 0;
             this.dgv.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgv_CellDoubleClick);
             // 
             // cartList
             // 
             this.cartList.HideSelection = false;
-            this.cartList.Location = new System.Drawing.Point(430, 0);
-            this.cartList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 1);
+            this.cartList.Location = new System.Drawing.Point(573, 0);
+            this.cartList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 1);
             this.cartList.Name = "cartList";
-            this.cartList.Size = new System.Drawing.Size(253, 183);
+            this.cartList.Size = new System.Drawing.Size(217, 224);
             this.cartList.TabIndex = 1;
             this.cartList.UseCompatibleStateImageBehavior = false;
             this.cartList.Click += new System.EventHandler(this.cartList_Click);
@@ -63,38 +63,36 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(434, 193);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(579, 238);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.Size = new System.Drawing.Size(84, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Total Price: ";
             // 
             // price
             // 
             this.price.AutoSize = true;
-            this.price.Location = new System.Drawing.Point(511, 193);
-            this.price.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.price.Location = new System.Drawing.Point(681, 238);
             this.price.Name = "price";
-            this.price.Size = new System.Drawing.Size(0, 13);
+            this.price.Size = new System.Drawing.Size(0, 17);
             this.price.TabIndex = 3;
             // 
             // buyBtn
             // 
-            this.buyBtn.Location = new System.Drawing.Point(434, 221);
-            this.buyBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buyBtn.Location = new System.Drawing.Point(579, 272);
+            this.buyBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buyBtn.Name = "buyBtn";
-            this.buyBtn.Size = new System.Drawing.Size(64, 25);
+            this.buyBtn.Size = new System.Drawing.Size(85, 31);
             this.buyBtn.TabIndex = 4;
             this.buyBtn.Text = "Buy";
             this.buyBtn.UseVisualStyleBackColor = true;
             // 
             // clearBtn
             // 
-            this.clearBtn.Location = new System.Drawing.Point(434, 250);
-            this.clearBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clearBtn.Location = new System.Drawing.Point(579, 308);
+            this.clearBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(64, 25);
+            this.clearBtn.Size = new System.Drawing.Size(85, 31);
             this.clearBtn.TabIndex = 5;
             this.clearBtn.Text = "Clear Cart";
             this.clearBtn.UseVisualStyleBackColor = true;
@@ -102,16 +100,16 @@
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 374);
+            this.ClientSize = new System.Drawing.Size(794, 460);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.buyBtn);
             this.Controls.Add(this.price);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cartList);
             this.Controls.Add(this.dgv);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
