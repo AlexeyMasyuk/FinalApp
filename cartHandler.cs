@@ -15,16 +15,21 @@ namespace FinalApp
         private Label priceLabel;
         private ListView cartList;
         private ArrayList products;
-        private Dictionary<Product, int> amount { get; set; }
+        private Dictionary<string, int> amount { get; set; }
 
+        private void cartSet(ListView cartListView, Label label)
+        {
+            Price = 0;
+            priceLabel = label;
+            Cart = cartListView;
+            products = new ArrayList(1);
+            amount = new Dictionary<string, int>();
+            cartTitleSet();
+        }
 
         public cartHandler(ListView cartListView, Label label)
         {
-            Price = 0;
-            Cart = cartListView;
-            products = new ArrayList(1);
-            amount = new Dictionary<Product, int>();
-            cartTitleSet();
+            cartSet(cartListView, label);
         }
 
         private ArrayList Products
@@ -55,24 +60,62 @@ namespace FinalApp
             Cart.Items.Add("Name");
             Cart.Items.Add("Price");
             Cart.Items.Add("Amount");
+            Cart.Items.Add("Delete");
         }
 
         private bool exists(Product newProduct)
         {
-            if (Products.Contains(newProduct))
+            if (amount.ContainsKey(newProduct.Name.ToString()))
                 return true;
             return false;
         }
 
-        private void priceHandle(Product product, bool plus)
+        private void priceHandle(string price, bool plus)
         {
             int tmpPrice;
-            Int32.TryParse(product.Price, out tmpPrice);
+            Int32.TryParse(price, out tmpPrice);
             if (plus)
                 Price += tmpPrice;
             else
                 Price -= tmpPrice;
-            
+            priceLabel.Text = Price.ToString();
+        }
+
+        private void cartListHandle(Product product, int amount)
+        {
+            ListViewItem item = new ListViewItem(product.Name);
+            item.Name = product.Name;
+            cartList.Items.Add(item);
+            cartList.Items.Add(product.Price + '₪');
+            cartList.Items.Add(amount.ToString());
+            cartList.Items.Add("X");
+        }
+
+        private void removeFromList(int itemIndex)
+        {
+            for (int i = 0; i < 4; i++)
+                cartList.Items.Remove(cartList.Items[itemIndex - i]);
+        }
+
+        public void remove(ListViewItem item)
+        {
+            string productName = cartList.Items[item.Index-3].Text.ToString();
+            string price = cartList.Items[item.Index - 2].Text.ToString();
+            amount[productName]--;
+            priceHandle(price.Remove(price.Length - 1, 1), false);
+            if (amount[productName] == 0)
+            {
+                removeFromList(item.Index);
+                amount.Remove(productName);
+            }
+            else
+                cartList.Items[item.Index - 1].Text = amount[productName].ToString();           
+        }
+
+        private void itemAmountUpdate(string name)
+        {
+            ListViewItem[] item = cartList.Items.Find(name, false);
+            cartList.Items[item[0].Index + 2].Text = amount[name].ToString();
         }
 
         public void add(DataGridViewRow row)
@@ -81,15 +124,22 @@ namespace FinalApp
             if (!exists(product))
             {
                 Products.Add(product);
-                amount.Add(product, 1);
+                amount.Add(product.Name.ToString(), 1);
+                cartListHandle(product, amount[product.Name]);
             }
             else
-                amount[product]++;
+            { 
+                amount[product.Name]++;
+                itemAmountUpdate(product.Name);
+            }
+            priceHandle(product.Price, true);           
+        }
 
-            cartList.Items.Add(product.Name);
-            cartList.Items.Add(product.Price);
-            cartList.Items.Add(amount[product].ToString());
-            cartList.Items.Add("X");
+        public void clear()
+        {
+            cartList.Clear();
+            cartSet(cartList, priceLabel);
+            priceLabel.Text = "";
         }
     }
 }

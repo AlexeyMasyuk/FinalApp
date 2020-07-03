@@ -55,7 +55,7 @@
             this.cartList.Location = new System.Drawing.Point(573, 0);
             this.cartList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 1);
             this.cartList.Name = "cartList";
-            this.cartList.Size = new System.Drawing.Size(217, 224);
+            this.cartList.Size = new System.Drawing.Size(269, 224);
             this.cartList.TabIndex = 1;
             this.cartList.UseCompatibleStateImageBehavior = false;
             this.cartList.Click += new System.EventHandler(this.cartList_Click);
@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 460);
+            this.ClientSize = new System.Drawing.Size(844, 460);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.buyBtn);
             this.Controls.Add(this.price);

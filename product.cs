@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace FinalApp
 {
-    public class Product
+    public class Product : IEquatable<Product>
     {
         private string product_name;
         private string product_category;
@@ -75,20 +75,9 @@ namespace FinalApp
             }
         }
 
-        public static bool operator ==(Product p1, Product p2)
+        public bool Equals(Product product)
         {
-            if (p1.Name.ToString() == p2.Name.ToString())
-                if (p1.Category.ToString() == p2.Category.ToString())
-                    if (p1.Price.ToString() == p2.Price.ToString())
-                        return true;
-            return false;
-        }
-
-        public static bool operator !=(Product p1, Product p2)
-        {
-            if (p1==p2)
-                return true;
-            return false;
+            return Name == product.Name && Price == product.Price;
         }
     }
 }

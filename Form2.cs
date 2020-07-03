@@ -18,7 +18,7 @@ namespace FinalApp
     public partial class Form2 : Form
     {
         public Product[] products;
-        private int cartSum;
+        private cartHandler cart;
 
         public Form2()
         {
@@ -30,7 +30,7 @@ namespace FinalApp
             tableSet();
             tableSet(products[0].Name, products[0].Price, products[0].Category, products[0].Image, 0);
             tableSet(products[1].Name, products[1].Price, products[1].Category, products[1].Image, 1);
-            cartHandler cart = new cartHandler(cartList);
+            cart = new cartHandler(cartList,price);
         }
 
         private void tableSet(string name, string price, string category, Image image, int index )
@@ -42,7 +42,6 @@ namespace FinalApp
             dgv.RowTemplate.Resizable = DataGridViewTriState.True;
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
 
             for (int i = 0; i < 3; i++)
                 dgv[i, index].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -70,51 +69,20 @@ namespace FinalApp
             }
         }
 
-        private void cartPriceUpdate(string numStr, bool plus)
-        {
-            int tmp = 0;
-            Int32.TryParse(numStr, out tmp);
-            if(plus)
-                cartSum += tmp;
-            else
-                cartSum -= tmp;
-            price.Text = cartSum.ToString();
-        }
-
-        private void addToCart()
-        {
-
-        }
-
         private void dgv_CellDoubleClick(object sender, MouseEventArgs e)
         {
-            int selectedRowIndex = dgv.SelectedCells[0].RowIndex;
-            string selected = dgv.Rows[selectedRowIndex].Cells["Price"].Value.ToString();
-            cartPriceUpdate(selected, true);
-            addToCart(selected, selectedRowIndex);
-        }
-
-        private void removeFromCart()
-        {
-            cartList.Items.RemoveAt(cartList.SelectedItems[0].Index - 1);
-            cartList.Items.Remove(cartList.SelectedItems[0]);
+            cart.add(dgv.Rows[dgv.SelectedCells[0].RowIndex]);
         }
 
         private void cartList_Click(object sender, EventArgs e)
         {
             if (cartList.SelectedItems[0].Text.ToString() == "X")
-            {
-                string numStr = cartList.Items[cartList.SelectedItems[0].Index].Tag.ToString();
-                cartPriceUpdate(numStr, false);
-                removeFromCart();
-            }
+                cart.remove(cartList.SelectedItems[0]);
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-            cartList.Items.Clear();
-            cartSum = 0;
-            price.Text = "";
+            cart.clear();
         }
     }
 }
