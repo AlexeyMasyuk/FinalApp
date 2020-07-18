@@ -41,8 +41,7 @@ namespace FinalApp
             get { return product_name; }
             set
             {
-                if (value.Length > 0)
-                    product_name = value;
+                product_name = value;
             }
         }
 
@@ -51,8 +50,7 @@ namespace FinalApp
             get { return product_category; }
             set
             {
-                if (value.Length > 0)
-                    product_category = value;
+                product_category = value;
             }
         }
 
@@ -61,8 +59,7 @@ namespace FinalApp
             get { return product_price; }
             set
             {
-                if (value.Length > 0)
-                    product_price = value;
+                product_price = value;
             }
         }
 
