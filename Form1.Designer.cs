@@ -35,10 +35,10 @@
             // 
             // customerBtn
             // 
-            this.customerBtn.Location = new System.Drawing.Point(46, 24);
-            this.customerBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.customerBtn.Location = new System.Drawing.Point(61, 30);
+            this.customerBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.customerBtn.Name = "customerBtn";
-            this.customerBtn.Size = new System.Drawing.Size(70, 55);
+            this.customerBtn.Size = new System.Drawing.Size(93, 68);
             this.customerBtn.TabIndex = 0;
             this.customerBtn.Text = "Customer";
             this.customerBtn.UseVisualStyleBackColor = true;
@@ -46,22 +46,23 @@
             // 
             // supplierBtn
             // 
-            this.supplierBtn.Location = new System.Drawing.Point(46, 126);
-            this.supplierBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.supplierBtn.Location = new System.Drawing.Point(61, 155);
+            this.supplierBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.supplierBtn.Name = "supplierBtn";
-            this.supplierBtn.Size = new System.Drawing.Size(70, 58);
+            this.supplierBtn.Size = new System.Drawing.Size(93, 71);
             this.supplierBtn.TabIndex = 1;
             this.supplierBtn.Text = "Supplier";
             this.supplierBtn.UseVisualStyleBackColor = true;
+            this.supplierBtn.Click += new System.EventHandler(this.supplierBtn_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(174, 239);
+            this.ClientSize = new System.Drawing.Size(232, 294);
             this.Controls.Add(this.supplierBtn);
             this.Controls.Add(this.customerBtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

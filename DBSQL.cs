@@ -10,6 +10,8 @@ using System.Data.OleDb;
 using System.Collections;
 using FinalApp;
 using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 /* Class to handle DB
  * students data
@@ -50,9 +52,16 @@ namespace DBclassHWado.net
         }
 
         /* Adds students object data to students DB */
-/*        public void InsertStudent(Student Item)
+        public void InsertStudent()
         {
-            string cmdStr = "INSERT INTO Students (id, studentName, studentCity) VALUES(@id, @studentName, @studentCity)";
+            var pic = File.ReadAllBytes(Application.StartupPath + @"\..\..\mouse.jpg");
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "INSERT INTO imageTest (picture) values (@p1)";
+            cmd.Parameters.AddWithValue("@p1", pic);
+            ExecuteSimpleQuery(cmd);
+
+/*            string cmdStr = "INSERT INTO Students (id, studentName, studentCity) VALUES(@id, @studentName, @studentCity)";
         using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
                 if (Item.Id == -1)
@@ -66,8 +75,8 @@ namespace DBclassHWado.net
                 command.Parameters.AddWithValue("@studentName", Item.FirstName);
                 command.Parameters.AddWithValue("@studentCity", Item.CityName);
                 base.ExecuteSimpleQuery(command);
-            }
-        }*/
+            }*/
+        }
 
         /* gets how much students records in students DB
          * Returns number of students */

@@ -47,6 +47,7 @@
             this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
             this.dgv.RowHeadersWidth = 62;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.Size = new System.Drawing.Size(568, 460);
@@ -90,6 +91,7 @@
             this.buyBtn.TabIndex = 4;
             this.buyBtn.Text = "Buy";
             this.buyBtn.UseVisualStyleBackColor = true;
+            this.buyBtn.Click += new System.EventHandler(this.buyBtn_Click);
             // 
             // clearBtn
             // 
@@ -120,6 +122,7 @@
             this.catShowBtn.TabIndex = 7;
             this.catShowBtn.Text = "Show Only";
             this.catShowBtn.UseVisualStyleBackColor = true;
+            this.catShowBtn.Click += new System.EventHandler(this.catShowBtn_Click);
             // 
             // sortBox
             // 
@@ -136,6 +139,8 @@
             // categoryShowBox
             // 
             this.categoryShowBox.FormattingEnabled = true;
+            this.categoryShowBox.Items.AddRange(new object[] {
+            "All"});
             this.categoryShowBox.Location = new System.Drawing.Point(706, 434);
             this.categoryShowBox.Name = "categoryShowBox";
             this.categoryShowBox.Size = new System.Drawing.Size(111, 24);

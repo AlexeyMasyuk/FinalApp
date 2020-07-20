@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -12,14 +13,25 @@ namespace FinalApp
     {
         private DataGridView in_dataGrid;
         private Product[] in_products;
+        private Product[] beforeCategorySort;
 
-        public DataGridHandler(Product[] products, DataGridView dataGridView)
+        public DataGridHandler(Product[] products, DataGridView dataGridView, ComboBox categoryBox)
         {
             DataGrid = dataGridView;
             Products = products;
             titleSet();
             Products = charSort();
             tableSet();
+            ProductsBeforeSort = null;
+            categoryBoxFill(categoryBox);
+        }
+
+        private void categoryBoxFill(ComboBox categoryBox)
+        {
+            ArrayList categoryList= new ArrayList();
+            for (int i = 0; i < Products.Length; i++)
+                if (!categoryBox.Items.Contains(Products[i].Category))
+                    categoryBox.Items.Add(Products[i].Category);                  
         }
 
         private DataGridView DataGrid
@@ -31,6 +43,12 @@ namespace FinalApp
         {
             get { return in_products; }
             set { in_products = value; }
+        }
+
+        private Product[] ProductsBeforeSort
+        {
+            get { return beforeCategorySort; }
+            set { beforeCategorySort = value; }
         }
 
         private void addImgCol_changeTitleCell(int index)
@@ -146,6 +164,49 @@ namespace FinalApp
         {
             Products = charSort();
             tableSet();
+        }
+
+        private int categoryCount(string category)
+        {
+            int count = 0;
+            for (int i = 0; i < Products.Length; i++)
+                if (Products[i].Category == category)
+                    count++;
+            return count;
+        }
+
+        private void gridClear()
+        {
+            DataGrid.Rows.Clear();
+        }
+
+        public void categorySort(string category)
+        {
+            if (category != "All") 
+            {
+                gridClear();
+                int newIndex = 0;
+                if (ProductsBeforeSort != null)
+                    Products = ProductsBeforeSort;
+                else
+                    ProductsBeforeSort = Products;
+                Product[] newProducts = new Product[categoryCount(category)];
+                for (int i = 0; i < Products.Length; i++)
+                    if (Products[i].Category == category)
+                        newProducts[newIndex++] = Products[i];
+                Products = newProducts;
+                DataGrid.RowCount = Products.Length;
+                tableSet();
+            }
+            else if (category == "All" && ProductsBeforeSort != null) 
+            {
+                gridClear();
+                Products = ProductsBeforeSort;
+                ProductsBeforeSort = null;
+                DataGrid.RowCount = Products.Length;
+                tableSet();
+            }
+
         }
     }
 }

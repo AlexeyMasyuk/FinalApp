@@ -46,5 +46,16 @@ namespace FinalApp
                 Visible = true;
             }           
         }
+
+        private void supplierBtn_Click(object sender, EventArgs e)
+        {
+            Form1.ActiveForm.Hide();
+            using (Form3 form3 = new Form3())
+            {
+                form3.CON = dataB;
+                form3.ShowDialog();
+                Visible = true;
+            }
+        }
     }
 }

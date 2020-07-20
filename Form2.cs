@@ -21,6 +21,23 @@ namespace FinalApp
         private cartHandler cart;
         private DataGridHandler dataGrid;
 
+        private Product[] Products
+        {
+            get { return products; }
+        }
+
+        private cartHandler Cart
+        {
+            get { return cart; }
+            set { cart = value; }
+        }
+
+        private DataGridHandler DataGrid
+        {
+            get { return dataGrid; }
+            set { dataGrid = value; }
+        }
+
         public Form2()
         {
             InitializeComponent();
@@ -28,39 +45,48 @@ namespace FinalApp
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            dataGrid = new DataGridHandler(products, dgv);
-            cart = new cartHandler(cartList,price);
+            DataGrid = new DataGridHandler(Products, dgv, categoryShowBox);
+            Cart = new cartHandler(cartList,price);
         }
-
-
-
-
-
 
         private void dgv_CellDoubleClick(object sender, MouseEventArgs e)
         {
-            cart.add(dgv.Rows[dgv.SelectedCells[0].RowIndex]);
+            Cart.add(dgv.Rows[dgv.SelectedCells[0].RowIndex]);
         }
 
         private void cartList_Click(object sender, EventArgs e)
         {
             if (cartList.SelectedItems[0].Text.ToString() == "X")
-                cart.remove(cartList.SelectedItems[0]);
+                Cart.remove(cartList.SelectedItems[0]);
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-            cart.clear();
+            Cart.clear();
         }
 
         private void sortBtn_Click(object sender, EventArgs e)
         {
-            if (sortBox.SelectedItem.ToString() == "Low Price")
-                dataGrid.fromLowPrice();
-            else if (sortBox.SelectedItem.ToString() == "High Price")
-                dataGrid.fromHighstPrice();
-            else
-                dataGrid.a_zSort();
+            if (sortBox.SelectedIndex >= 0)
+            {
+                if (sortBox.SelectedItem.ToString() == "Low Price")
+                    DataGrid.fromLowPrice();
+                else if (sortBox.SelectedItem.ToString() == "High Price")
+                    DataGrid.fromHighstPrice();
+                else
+                    DataGrid.a_zSort();
+            }
+        }
+
+        private void catShowBtn_Click(object sender, EventArgs e)
+        {
+            if (categoryShowBox.SelectedIndex >= 0)
+                DataGrid.categorySort(categoryShowBox.SelectedItem.ToString());
+        }
+
+        private void buyBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

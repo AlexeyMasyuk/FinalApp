@@ -28,3 +28,4 @@ C:\Users\amasyuk\Documents\GitHub\FinalApp\obj\Debug\FinalApp.Properties.Resourc
 C:\Users\amasyuk\Documents\GitHub\FinalApp\obj\Debug\FinalApp.csproj.GenerateResource.cache
 C:\Users\amasyuk\Documents\GitHub\FinalApp\obj\Debug\FinalApp.exe
 C:\Users\amasyuk\Documents\GitHub\FinalApp\obj\Debug\FinalApp.pdb
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.Form3.resources
