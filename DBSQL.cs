@@ -52,30 +52,40 @@ namespace DBclassHWado.net
         }
 
         /* Adds students object data to students DB */
-        public void InsertStudent()
+        public void InsertPicture()
         {
             var pic = File.ReadAllBytes(Application.StartupPath + @"\..\..\mouse.jpg");
+            
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "INSERT INTO imageTest (picture) values (@p1)";
             cmd.Parameters.AddWithValue("@p1", pic);
             ExecuteSimpleQuery(cmd);
+        }
 
-/*            string cmdStr = "INSERT INTO Students (id, studentName, studentCity) VALUES(@id, @studentName, @studentCity)";
-        using (OleDbCommand command = new OleDbCommand(cmdStr))
+        public void picGet()
+        {
+            DataSet ds = new DataSet();
+            byte[][] picByte=new byte[3][];
+            string cmdStr = "SELECT * FROM imageTest";
+            using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
-                if (Item.Id == -1)
-                {
-                    command.Parameters.AddWithValue("@id", GetStudentNumber());
-                }
-                else
-                {
-                    command.Parameters.AddWithValue("@id", Item.Id);
-                }
-                command.Parameters.AddWithValue("@studentName", Item.FirstName);
-                command.Parameters.AddWithValue("@studentCity", Item.CityName);
-                base.ExecuteSimpleQuery(command);
-            }*/
+                ds = GetMultipleQuery(command);
+            }
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = ds.Tables[0];
+            }
+            catch { }
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                    picByte[i] = (byte[])dt.Rows[i][1];
+            }
+            ImageConverter ic = new ImageConverter();
+            Image img = (Image)ic.ConvertFrom(picByte[0]);//here the exception comes
+            
         }
 
         /* gets how much students records in students DB
@@ -90,6 +100,8 @@ namespace DBclassHWado.net
             }
             return result;
         }
+
+
 
         /* gets students data from students DB 
          Returns students object array */
