@@ -18,9 +18,9 @@ namespace FinalApp
         private string product_price;
         private Image product_image;
 
-        public Product(string name, string price, string category, string imagePath):this(name, price)
+        public Product(string name, string price, string category, byte[] imageBytes):this(name, price)
         {
-            Image = strToImage(imagePath);
+            Image = strToImage(imageBytes);
             Category = category;
         }
 
@@ -30,10 +30,10 @@ namespace FinalApp
             Price = price;
         }
 
-        private Image strToImage(string imagePath)
+        private Image strToImage(byte[] imageBytes)
         {
-            Image image = Image.FromFile(Application.StartupPath + imagePath);
-            return image;
+            ImageConverter ic = new ImageConverter();
+            return (Image)ic.ConvertFrom(OleImageUnwrap.GetImageBytesFromOLEField(imageBytes));
         }
 
         public string Name

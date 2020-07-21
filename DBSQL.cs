@@ -52,14 +52,17 @@ namespace DBclassHWado.net
         }
 
         /* Adds students object data to students DB */
-        public void InsertPicture()
+        public void InsertPicture(string name, string price, string category, string imagePath)
         {
-            var pic = File.ReadAllBytes(Application.StartupPath + @"\..\..\mouse.jpg");
+            var pic = File.ReadAllBytes(Application.StartupPath + @"\..\..\pics\" + imagePath);
             
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "INSERT INTO imageTest (picture) values (@p1)";
-            cmd.Parameters.AddWithValue("@p1", pic);
+            cmd.CommandText = "INSERT INTO products (product_name, product_price, product_category, ole_pic) values (@p1, @p2, @p3, @p4)";
+            cmd.Parameters.AddWithValue("@p1", name);
+            cmd.Parameters.AddWithValue("@p2", price);
+            cmd.Parameters.AddWithValue("@p3", category);
+            cmd.Parameters.AddWithValue("@p4", pic);
             ExecuteSimpleQuery(cmd);
         }
 
@@ -84,13 +87,13 @@ namespace DBclassHWado.net
                     picByte[i] = (byte[])dt.Rows[i][1];
             }
             ImageConverter ic = new ImageConverter();
-            Image img = (Image)ic.ConvertFrom(picByte[0]);//here the exception comes
-            
+            Image img = (Image)ic.ConvertFrom(OleImageUnwrap.GetImageBytesFromOLEField(picByte[0]));//here the exception comes
+            img.Save("fromSQLtest.jpg");
         }
 
         /* gets how much students records in students DB
          * Returns number of students */
-        public int GetStudentNumber()
+        public int GetProductsNumber()
         {
             int result;
             string cmdStr = "SELECT COUNT (*) FROM products";
@@ -108,7 +111,7 @@ namespace DBclassHWado.net
         public Product[] GetProducts()
         {
             DataSet ds = new DataSet();
-            Product[] Products = new Product[GetStudentNumber()];
+            Product[] Products = new Product[GetProductsNumber()];
             string cmdStr = "SELECT * FROM Products";
             using (OleDbCommand command = new OleDbCommand(cmdStr))
             {
@@ -127,7 +130,7 @@ namespace DBclassHWado.net
                 {
                     int id;
                     Int32.TryParse(dt.Rows[i][0].ToString(), out id);
-                    Products[i] = new Product(dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString(), dt.Rows[i][3].ToString(), dt.Rows[i][4].ToString());
+                    Products[i] = new Product(dt.Rows[i][1].ToString(), dt.Rows[i][2].ToString(), dt.Rows[i][3].ToString(), (byte[])dt.Rows[i][4]);
 
                 }
             }
