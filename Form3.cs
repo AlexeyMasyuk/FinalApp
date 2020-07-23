@@ -28,9 +28,17 @@ namespace FinalApp
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void addFromBoxesBtn_Click(object sender, EventArgs e)
         {
+            /*if(ProductValidator.boxAddValidation(nameBox.Text.ToString(), categoryBox.Text.ToString(), priceBox.Text.ToString(), picturePathBox.Text.ToString()))*/
+                /* ADD to DB */
+        }
 
+        private void addFromFileBtn_Click(object sender, EventArgs e)
+        {
+            Product[] products = ProductValidator.fileCheck(addFromFilePathBox.Text.ToString());
+           /* if (products != null)*/
+               
         }
     }
 }
