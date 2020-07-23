@@ -23,6 +23,7 @@ namespace FinalApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            ProductValidator.fileCheck(Application.StartupPath + @"\..\..\filetest.txt");
             string dbPath = Application.StartupPath + @"\..\..\shop.accdb";
             if (File.Exists(dbPath))
             {

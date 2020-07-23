@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="OleImageUnwrap.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataGridHandler.cs" />
