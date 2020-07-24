@@ -52,17 +52,15 @@ namespace DBclassHWado.net
         }
 
         /* Adds students object data to students DB */
-        public void InsertPicture(string name, string price, string category, string imagePath)
-        {
-            var pic = File.ReadAllBytes(Application.StartupPath + @"\..\..\pics\" + imagePath);
-            
+        public void InsertPicture(string name, string price, string category, byte[] imagePath)
+        {            
             OleDbCommand cmd = new OleDbCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "INSERT INTO products (product_name, product_price, product_category, ole_pic) values (@p1, @p2, @p3, @p4)";
             cmd.Parameters.AddWithValue("@p1", name);
             cmd.Parameters.AddWithValue("@p2", price);
             cmd.Parameters.AddWithValue("@p3", category);
-            cmd.Parameters.AddWithValue("@p4", pic);
+            cmd.Parameters.AddWithValue("@p4", imagePath);
             ExecuteSimpleQuery(cmd);
         }
 

@@ -30,15 +30,27 @@ namespace FinalApp
 
         private void addFromBoxesBtn_Click(object sender, EventArgs e)
         {
-            /*if(ProductValidator.boxAddValidation(nameBox.Text.ToString(), categoryBox.Text.ToString(), priceBox.Text.ToString(), picturePathBox.Text.ToString()))*/
-                /* ADD to DB */
+            string[] boxData = { nameBox.Text.ToString(), categoryBox.Text.ToString(), priceBox.Text.ToString(), picturePathBox.Text.ToString() };
+            if (ProductValidator.boxAddValidation(boxData[0], boxData[1], boxData[2], boxData[3]))
+                CON.InsertPicture(boxData[0], boxData[1], boxData[2], File.ReadAllBytes(boxData[3]));
+        }
+
+        private static byte[] imageToByteArray(Image image)
+        {
+            using (var ms = new MemoryStream())
+            {
+                image.Save(ms, image.RawFormat);
+                return ms.ToArray();
+            }
         }
 
         private void addFromFileBtn_Click(object sender, EventArgs e)
         {
             Product[] products = ProductValidator.fileCheck(addFromFilePathBox.Text.ToString());
-           /* if (products != null)*/
-               
+            if (products != null)
+                for (int i = 0; i < products.Length; i++)
+                    CON.InsertPicture(products[i].Name, products[i].Price, products[i].Category, imageToByteArray(products[i].Image));
+
         }
     }
 }

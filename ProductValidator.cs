@@ -23,13 +23,6 @@ namespace FinalApp
             return false;
         }
 
-        private static bool lastCharCheck(string fileName)
-        {
-            if (fileName.Substring(fileName.Length - 3) == "txt")
-                return true;
-            return false;
-        }
-
         private static bool lineFaultsCheck(int dataLengthFlag, int spaceSignCount,ref List<int> faultLines, char[] path, int i, int j, string[] lines, ref int pathIndex)
         {
             if ((dataLengthFlag > 14 || spaceSignCount > 3) && spaceSignCount != 3)
@@ -90,6 +83,12 @@ namespace FinalApp
             return faultLines;
         }
 
+        private static void lastCharCheck(ref string str)
+        {
+            if (str[str.Length - 1] == '\r' || str[str.Length - 1] == '\n')
+                str = str.Remove(str.Length - 1);
+        }
+
         public static Product[] ConvertToProducts(string fileData)
         {
             string[] lines = fileData.Split('\n');
@@ -98,6 +97,7 @@ namespace FinalApp
             for (int i = 0; i < products.Length; i++)
             {
                 productData = lines[i].Split('*');
+                lastCharCheck(ref productData[productData.Length - 1]);
                 products[i] = new Product(productData[0], productData[1], productData[2], File.ReadAllBytes(productData[3]));
             }
             return products;
