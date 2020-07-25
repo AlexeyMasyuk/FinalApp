@@ -20,7 +20,7 @@ namespace FinalApp
             DataGrid = dataGridView;
             Products = products;
             titleSet();
-            Products = charSort();
+            alphSort();
             tableSet();
             ProductsBeforeSort = null;
             categoryBoxFill(categoryBox);
@@ -120,7 +120,23 @@ namespace FinalApp
             return newProducts;
         }
 
-
+        private void alphSort()
+        {
+            Product[] newProducts = new Product[Products.Length];
+            int criticalIndex = 0, newProductIndex = 0;
+            for (int j = 0; j < Products.Length; j++)
+            {
+                for (int i = 0; i < Products.Length; i++)
+                {
+                    if (Products[i] != null && string.Compare(Products[i].Name, Products[criticalIndex].Name) < 0)
+                        criticalIndex = i;
+                }
+                newProducts[newProductIndex++] = Products[criticalIndex];
+                Products[criticalIndex] = null;
+                criticalIndex = notNullProduct();
+            }
+            Products = newProducts;
+        }
 
         private Product[] charSort()
         {
@@ -139,6 +155,8 @@ namespace FinalApp
                 Products[criticalIndex] = null;
                 criticalIndex = notNullProduct();
             }
+            List<Product> prod;
+           
             return newProducts;
         }
 
@@ -162,7 +180,7 @@ namespace FinalApp
 
         public void a_zSort()
         {
-            Products = charSort();
+            alphSort();
             tableSet();
         }
 
