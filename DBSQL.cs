@@ -64,6 +64,31 @@ namespace DBclassHWado.net
             ExecuteSimpleQuery(cmd);
         }
 
+        public bool nameCheck(string name, string customer)
+        {
+            int res = 0;
+            string[] data = { "suppliers", "supplier_name" };
+            if (customer == "cust") 
+            {
+                data[0] = "customers";
+                data[1] = "cus_name";
+            }
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT COUNT(" + data[1] + ") FROM " + data[0] + " WHERE " + data[1] + "='" + name + "'";
+            try
+            {
+                res = ExecuteScalarIntQuery(cmd);
+                if (res != 0) 
+                    return true;
+            }
+            catch 
+            {
+                return false;
+            }
+            return false;
+        }
+
         public void picGet()
         {
             DataSet ds = new DataSet();

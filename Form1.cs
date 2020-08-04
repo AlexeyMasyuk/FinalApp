@@ -57,5 +57,16 @@ namespace FinalApp
                 Visible = true;
             }
         }
+
+        private void registerBtn_Click(object sender, EventArgs e)
+        {
+            Form1.ActiveForm.Hide();
+            using (Form4 form4 = new Form4())
+            {
+                form4.CON = dataB;
+                form4.ShowDialog();
+                Visible = true;
+            }
+        }
     }
 }
