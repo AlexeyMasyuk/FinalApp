@@ -52,5 +52,10 @@ namespace FinalApp
                     CON.InsertPicture(products[i].Name, products[i].Price, products[i].Category, imageToByteArray(products[i].Image));
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Product Name*Price*Category*Picture Path (Max 440x320)", "File Format", MessageBoxButtons.OK);
+        }
     }
 }
