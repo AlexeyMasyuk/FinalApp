@@ -31,3 +31,4 @@ C:\Users\amasyuk\Documents\GitHub\FinalApp\obj\Debug\FinalApp.pdb
 C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.Form3.resources
 C:\Users\amasyuk\Documents\GitHub\FinalApp\obj\Debug\FinalApp.Form3.resources
 C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.Form4.resources
+C:\Users\amasyuk\Documents\GitHub\FinalApp\obj\Debug\FinalApp.Form4.resources

@@ -44,7 +44,14 @@ namespace FinalApp
         {
             string cust = fieldsFillCheck();
             if (cust != null)
-                CON.nameCheck(nameBox.Text.ToString(), cust);
+            {
+                if (!CON.nameCheck(nameBox.Text.ToString(), emailBox.Text.ToString(), cust, true))
+                    MessageBox.Show(choiseBox.SelectedItem.ToString() + " " + nameBox.Text.ToString() + " already exists", "Fail", MessageBoxButtons.OK);
+                else
+                    MessageBox.Show(choiseBox.SelectedItem.ToString() + " " + nameBox.Text.ToString() + " successfully added", "Succeed", MessageBoxButtons.OK);
+            }
+            else
+                MessageBox.Show("Select one of the category in the box\n and fill all fields.", "Wrong", MessageBoxButtons.OK);
         }
     }
 }

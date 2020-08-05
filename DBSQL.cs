@@ -64,7 +64,21 @@ namespace DBclassHWado.net
             ExecuteSimpleQuery(cmd);
         }
 
-        public bool nameCheck(string name, string customer)
+        private bool nameInsert(string name, string email,string table)
+        {
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "INSERT INTO "+ table + " values (@p1, @p2)";
+            cmd.Parameters.AddWithValue("@p1", name);
+            cmd.Parameters.AddWithValue("@p2", email);
+            try { 
+                ExecuteSimpleQuery(cmd);
+                return true;
+            }
+            catch { return false; }
+        }
+
+        public bool nameCheck(string name, string email, string customer, bool insert)
         {
             int res = 0;
             string[] data = { "suppliers", "supplier_name" };
@@ -79,14 +93,18 @@ namespace DBclassHWado.net
             try
             {
                 res = ExecuteScalarIntQuery(cmd);
-                if (res != 0) 
+                if (!insert && res > 0)
                     return true;
+                else if(!insert && res > 0)
+                if (insert && res == 0)
+                    if (nameInsert(name, email, data[0]))
+                        return true;
+                return false;               
             }
             catch 
             {
                 return false;
             }
-            return false;
         }
 
         public void picGet()

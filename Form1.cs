@@ -36,25 +36,39 @@ namespace FinalApp
             }
         }
 
+        private bool nameCheck(string cust)
+        {
+            if (nameBox.TextLength > 0)
+                if (dataB.nameCheck(nameBox.Text.ToString(), "", cust, false))
+                    return true;
+            return false;
+        }
+
         private void customerBtn_Click(object sender, EventArgs e)
         {
-            Form1.ActiveForm.Hide();
-            using (Form2 form2 = new Form2())
+            if (nameCheck("cust"))
             {
-                form2.products = dataB.GetProducts();               
-                form2.ShowDialog();
-                Visible = true;
-            }           
+                Form1.ActiveForm.Hide();
+                using (Form2 form2 = new Form2())
+                {
+                    form2.products = dataB.GetProducts();
+                    form2.ShowDialog();
+                    Visible = true;
+                }
+            }
         }
 
         private void supplierBtn_Click(object sender, EventArgs e)
         {
-            Form1.ActiveForm.Hide();
-            using (Form3 form3 = new Form3())
+            if (nameCheck("supp"))
             {
-                form3.CON = dataB;
-                form3.ShowDialog();
-                Visible = true;
+                Form1.ActiveForm.Hide();
+                using (Form3 form3 = new Form3())
+                {
+                    form3.CON = dataB;
+                    form3.ShowDialog();
+                    Visible = true;
+                }
             }
         }
 
