@@ -96,6 +96,7 @@ namespace DBclassHWado.net
                 if (!insert && res > 0)
                     return true;
                 else if(!insert && res > 0)
+                    return false;
                 if (insert && res == 0)
                     if (nameInsert(name, email, data[0]))
                         return true;

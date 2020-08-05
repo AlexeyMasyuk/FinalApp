@@ -143,14 +143,5 @@ namespace FinalApp
             }
         }
 
-/*        public static bool fileValidator(string filePath)
-        {
-            if (filePath.Length > 0)
-            {
-                if (File.Exists(filePath))
-                    if(lastCharCheck(filePath))
-
-            }
-        }*/
     }
 }
