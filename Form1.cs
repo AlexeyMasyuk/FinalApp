@@ -23,7 +23,7 @@ namespace FinalApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string dbPath = Application.StartupPath + @"\..\..\shop.accdb";
+            string dbPath = Application.StartupPath + @"\shop.accdb";
             if (File.Exists(dbPath))
             {
                 DBSQL.ConnectionString = dbPath;
