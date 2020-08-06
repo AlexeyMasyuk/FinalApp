@@ -1,4 +1,7 @@
-﻿using DBclassHWado.net;
+﻿//Alexey Masyuk, Yulia Berkovich, 43/5 
+//supplier options form(adding a new product:name,category,price,picture) 
+
+using DBclassHWado.net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +31,7 @@ namespace FinalApp
             InitializeComponent();
         }
 
+		// filling product information
         private void addFromBoxesBtn_Click(object sender, EventArgs e)
         {
             string[] boxData = { nameBox.Text.ToString(), categoryBox.Text.ToString(), priceBox.Text.ToString(), picturePathBox.Text.ToString() };
@@ -37,6 +41,7 @@ namespace FinalApp
                 MessageBox.Show("Fill all fields", "Empty field", MessageBoxButtons.OK);
         }
 
+		//saving the image to byte array
         private static byte[] imageToByteArray(Image image)
         {
             using (var ms = new MemoryStream())
@@ -46,6 +51,7 @@ namespace FinalApp
             }
         }
 
+		//adding a new product from file
         private void addFromFileBtn_Click(object sender, EventArgs e)
         {
             Product[] products = ProductValidator.fileCheck(addFromFilePathBox.Text.ToString());
@@ -55,6 +61,7 @@ namespace FinalApp
 
         }
 
+		//format 
         private void formatBtn_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Name*Price(Positive Natural Number)*Category*Product Image Path\n" +

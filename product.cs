@@ -1,4 +1,7 @@
-﻿using DBclassHWado.net;
+﻿//Alexey Masyuk, Yulia Berkovich 43/5
+//Class represent object 'product' ,contains information about name,category,price,image to save in the database
+
+using DBclassHWado.net;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,11 +16,13 @@ namespace FinalApp
 {
     public class Product : IEquatable<Product>
     {
+		//fields(product information)
         private string product_name;
         private string product_category;
         private string product_price;
         private Image product_image;
 
+		//constructors 
         public Product(string name, string price, string category, byte[] imageBytes):this(name, price)
         {
             Image = strToImage(imageBytes);
@@ -30,6 +35,7 @@ namespace FinalApp
             Price = price;
         }
 
+		//image conversion
         private Image strToImage(byte[] imageBytes)
         {
             ImageConverter ic = new ImageConverter();

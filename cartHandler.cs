@@ -139,7 +139,8 @@ namespace FinalApp
             string productName = cartList.Items[item.Index-3].Text.ToString();
             string price = cartList.Items[item.Index - 2].Text.ToString();
             amount[productName]--;
-            priceHandle(price.Remove(price.Length - 1, 1), false);
+            Product p = (Product)Products[searchByName(productName)];
+            priceHandle(p.Price.ToString(), false);
             if (amount[productName] == 0)
             {
                 removeFromList(item.Index);

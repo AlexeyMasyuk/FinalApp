@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Alexey Masyuk, Yulia Berkovich 43/5
+// Class for creating a pdf file
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,9 +79,10 @@ namespace FinalApp
             Doc.Add(myTable);
         }
 
+		//creating file name 
         public string nameGenerate()
         {
-            if (File.Exists("ToCustomer.pdf"))
+            if (File.Exists("ToCustomer.pdf"))      
             {
                 int i = 1;
                 for (; File.Exists("ToCustomer" + i + ".pdf"); i++) ;

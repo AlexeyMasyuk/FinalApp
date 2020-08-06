@@ -1,4 +1,8 @@
-﻿using DBclassHWado.net;
+﻿//Alexey Masyuk, Yulia Berkovich, 43/5 
+//registration form
+//registration of a new supplier or customer
+
+using DBclassHWado.net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +30,7 @@ namespace FinalApp
             InitializeComponent();
         }
 
+		//user choice(customer or supplier)-combo box,entering a name and email,checking if all fields are filld
         private string fieldsFillCheck()
         {
             if (choiseBox.SelectedItem != null)
@@ -40,6 +45,7 @@ namespace FinalApp
             return null;
         }
 
+		//storing the user in the database or if user alredy exists displaying message
         private void registerBtn_Click(object sender, EventArgs e)
         {
             string cust = fieldsFillCheck();

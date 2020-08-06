@@ -1,4 +1,8 @@
-﻿using DBclassHWado.net;
+﻿//Alexey Masyuk, Yulia Berkovich, 43/5 
+//application login form (name entry,user choice: customer or suplier, registrationin the application)
+//Check if the user is registered(if the usernameis stored in the database )
+
+using DBclassHWado.net;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +25,7 @@ namespace FinalApp
             InitializeComponent();
         }
 
+		//database connection
         private void Form1_Load(object sender, EventArgs e)
         {
             string dbPath = Application.StartupPath + @"\..\..\shop.accdb";
@@ -36,6 +41,7 @@ namespace FinalApp
             }
         }
 
+		//checking if the name exists in database in table 'supplier' or 'customer' 
         private bool nameCheck(string cust)
         {
             if (nameBox.TextLength > 0)
@@ -43,7 +49,7 @@ namespace FinalApp
                     return true;
             return false;
         }
-
+ 		//when the button is clicked ,opens a new  form for the customer  
         private void customerBtn_Click(object sender, EventArgs e)
         {
             if (nameCheck("cust"))
@@ -60,6 +66,7 @@ namespace FinalApp
                 MessageBox.Show("Register or enter your name if you'r already registered.", "Empty field", MessageBoxButtons.OK);
         }
 
+		//when the button is clicked ,opens a new  form for the supplier
         private void supplierBtn_Click(object sender, EventArgs e)
         {
             if (nameCheck("supp"))
@@ -74,6 +81,7 @@ namespace FinalApp
             }
         }
 
+		//opening registration form
         private void registerBtn_Click(object sender, EventArgs e)
         {
             Form1.ActiveForm.Hide();
