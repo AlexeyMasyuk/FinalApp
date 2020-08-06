@@ -61,7 +61,7 @@ namespace FinalApp
 
         private static List<int> fileSyntexCheck(string fileString)
         {
-            string[] lines = fileString.Split('\r');
+            string[] lines = fileString.Split('\n');
             char[] path = null;
             List<int> faultLines = new List<int>();
             int dataLengthFlag = 0, spaceSignCount = 0, pathIndex = 0;
@@ -85,8 +85,13 @@ namespace FinalApp
 
         private static void lastCharCheck(ref string str)
         {
-            if (str[str.Length - 1] == '\r' || str[str.Length - 1] == '\n')
-                str = str.Remove(str.Length - 1);
+            if (str.Length > 0)
+            {
+                if (str[str.Length - 1] == '\r' || str[str.Length - 1] == '\n')
+                    str = str.Remove(str.Length - 1);
+            }
+            else
+                throw new Exception("Empty Line");
         }
 
         public static Product[] ConvertToProducts(string fileData)
@@ -98,7 +103,14 @@ namespace FinalApp
             {
                 productData = lines[i].Split('*');
                 lastCharCheck(ref productData[productData.Length - 1]);
-                products[i] = new Product(productData[0], productData[1], productData[2], File.ReadAllBytes(productData[3]));
+                try
+                {
+                    products[i] = new Product(productData[0], productData[1], productData[2], File.ReadAllBytes(productData[3]));
+                }
+                catch(Exception e)
+                {
+                    throw new Exception(e.Message + " on line " + i.ToString());
+                }
             }
             return products;
         }

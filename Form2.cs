@@ -13,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Prism.Services.Dialogs;
+
 namespace FinalApp
 {
     public partial class Form2 : Form
@@ -84,8 +86,18 @@ namespace FinalApp
                 DataGrid.categorySort(categoryShowBox.SelectedItem.ToString());
         }
 
+        //sending a file pdf(selected products from the list) on button click
         private void buyBtn_Click(object sender, EventArgs e)
         {
+            if (Cart.buy_toPDF())
+            {
+                System.Windows.Forms.DialogResult dr;
+                dr = MessageBox.Show("PayCheck created.\nDo you want to exit?.", "Done", MessageBoxButtons.YesNo);
+                if (dr == System.Windows.Forms.DialogResult.Yes)
+                {
+                    Environment.Exit(1);
+                }
+            }
 
         }
     }

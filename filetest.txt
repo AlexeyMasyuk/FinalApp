@@ -1,2 +1,1 @@
-aaaaaaa*100*asdssss*C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\pics\mouse.jpg
-aaaaaab*100*asdssss*C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\pics\printer.jpg
+aaaaaab*100*asdssss*C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\DBpics\tvPic.jpg

@@ -57,10 +57,10 @@
             // cartList
             // 
             this.cartList.HideSelection = false;
-            this.cartList.Location = new System.Drawing.Point(770, 0);
+            this.cartList.Location = new System.Drawing.Point(797, 0);
             this.cartList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 1);
             this.cartList.Name = "cartList";
-            this.cartList.Size = new System.Drawing.Size(183, 183);
+            this.cartList.Size = new System.Drawing.Size(189, 183);
             this.cartList.TabIndex = 1;
             this.cartList.UseCompatibleStateImageBehavior = false;
             this.cartList.Click += new System.EventHandler(this.cartList_Click);
@@ -108,7 +108,7 @@
             // 
             // sortBtn
             // 
-            this.sortBtn.Location = new System.Drawing.Point(779, 523);
+            this.sortBtn.Location = new System.Drawing.Point(811, 321);
             this.sortBtn.Margin = new System.Windows.Forms.Padding(2);
             this.sortBtn.Name = "sortBtn";
             this.sortBtn.Size = new System.Drawing.Size(61, 23);
@@ -119,7 +119,7 @@
             // 
             // catShowBtn
             // 
-            this.catShowBtn.Location = new System.Drawing.Point(780, 554);
+            this.catShowBtn.Location = new System.Drawing.Point(812, 352);
             this.catShowBtn.Margin = new System.Windows.Forms.Padding(2);
             this.catShowBtn.Name = "catShowBtn";
             this.catShowBtn.Size = new System.Drawing.Size(74, 22);
@@ -135,7 +135,7 @@
             "Low Price",
             "High Price",
             "Name A-Z"});
-            this.sortBox.Location = new System.Drawing.Point(864, 522);
+            this.sortBox.Location = new System.Drawing.Point(896, 320);
             this.sortBox.Margin = new System.Windows.Forms.Padding(2);
             this.sortBox.Name = "sortBox";
             this.sortBox.Size = new System.Drawing.Size(90, 21);
@@ -146,7 +146,7 @@
             this.categoryShowBox.FormattingEnabled = true;
             this.categoryShowBox.Items.AddRange(new object[] {
             "All"});
-            this.categoryShowBox.Location = new System.Drawing.Point(872, 555);
+            this.categoryShowBox.Location = new System.Drawing.Point(902, 352);
             this.categoryShowBox.Margin = new System.Windows.Forms.Padding(2);
             this.categoryShowBox.Name = "categoryShowBox";
             this.categoryShowBox.Size = new System.Drawing.Size(84, 21);
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 587);
+            this.ClientSize = new System.Drawing.Size(1028, 587);
             this.Controls.Add(this.categoryShowBox);
             this.Controls.Add(this.sortBox);
             this.Controls.Add(this.catShowBtn);

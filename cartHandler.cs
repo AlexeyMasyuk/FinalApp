@@ -34,21 +34,19 @@ namespace FinalApp
 
         private ArrayList Products
         {
-            get { return products; }         
+            get { return products; } 
+            set { products = value; }
         }
-
         private int Price
         {
             get { return totalPrice; }
             set { totalPrice = value; }
         }
-
         private Label PriceLabel
         {
             get { return priceLabel; }
             set { priceLabel = value; }
         }
-
         private ListView Cart
         {
             get { return cartList; }
@@ -78,7 +76,7 @@ namespace FinalApp
                 Price += tmpPrice;
             else
                 Price -= tmpPrice;
-            priceLabel.Text = Price.ToString();
+            PriceLabel.Text = Price.ToString();
         }
 
         private void cartListHandle(Product product, int amount)
@@ -140,6 +138,33 @@ namespace FinalApp
             cartList.Clear();
             cartSet(cartList, priceLabel);
             priceLabel.Text = "";
+        }
+
+        public bool buy_toPDF()
+        {
+            if (Products.Count != 0)
+            {
+                string[,] cartToBuy = new string[Cart.Items.Count / 4, 3];   //ta
+                int rows = Cart.Items.Count / 4;     //
+
+                for (int i = 0, k = 0; i < rows; i++, k++)
+                    for (int j = 0; j < 3; j++)
+                        cartToBuy[i, j] = Cart.Items[k++].Text;
+
+                try
+                {
+                    PDFcreate newPdf = new PDFcreate();
+                    newPdf.SetTitle("Dear customer!\nThanks for your purchase!");
+                    newPdf.SetTable(cartToBuy);
+                    newPdf.SetTitle("Total Price: " + PriceLabel.Text.ToString());
+                    newPdf.PDFclose();
+
+                    return true;
+                }
+                catch
+                { return false; }
+            }
+            return false;
         }
     }
 }

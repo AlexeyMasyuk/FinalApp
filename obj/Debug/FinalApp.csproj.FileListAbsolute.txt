@@ -32,3 +32,32 @@ C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.Form3.r
 C:\Users\amasyuk\Documents\GitHub\FinalApp\obj\Debug\FinalApp.Form3.resources
 C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.Form4.resources
 C:\Users\amasyuk\Documents\GitHub\FinalApp\obj\Debug\FinalApp.Form4.resources
+C:\Users\User\Desktop\FinalApp-master\bin\Debug\FinalApp.exe.config
+C:\Users\User\Desktop\FinalApp-master\bin\Debug\FinalApp.exe
+C:\Users\User\Desktop\FinalApp-master\bin\Debug\FinalApp.pdb
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.csprojAssemblyReference.cache
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.Form1.resources
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.Form2.resources
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.Form3.resources
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.Form4.resources
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.Properties.Resources.resources
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.csproj.GenerateResource.cache
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.exe
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.pdb
+C:\Users\User\Desktop\FinalApp-master\bin\Debug\itextsharp.dll
+C:\Users\User\Desktop\FinalApp-master\bin\Debug\itextsharp.xml
+C:\Users\User\Desktop\FinalApp-master\obj\Debug\FinalApp.csproj.CopyComplete
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\itextsharp.dll
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\itextsharp.xml
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\obj\Debug\FinalApp.csproj.CopyComplete
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\CommonServiceLocator.dll
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\Prism.dll
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\Prism.Wpf.dll
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\System.ValueTuple.dll
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\Prism.pdb
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\Prism.xml
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\Prism.Wpf.pdb
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\Prism.Wpf.xml
+C:\Users\Alexey Masyuk\source\repos\FinalApp\FinalApp\bin\Debug\System.ValueTuple.xml

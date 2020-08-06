@@ -53,9 +53,9 @@ namespace FinalApp
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void formatBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Product Name*Price*Category*Picture Path (Max 440x320)", "File Format", MessageBoxButtons.OK);
+            MessageBox.Show("Name*Price(Positive Natural Number)*Category*Product Image Path\n(Max Image Size: 420x420)", "Format", MessageBoxButtons.OK);
         }
     }
 }

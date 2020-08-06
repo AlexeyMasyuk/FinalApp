@@ -68,7 +68,10 @@ namespace FinalApp
             get { return product_image; }
             set
             {
-                product_image = value;
+                if (value.Size.Width < 400 && value.Size.Height < 400)
+                    product_image = value;
+                else
+                    throw new Exception("Wrong image Size "+value.Tag);
             }
         }
 
