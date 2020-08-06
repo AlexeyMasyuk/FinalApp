@@ -33,6 +33,8 @@ namespace FinalApp
             string[] boxData = { nameBox.Text.ToString(), categoryBox.Text.ToString(), priceBox.Text.ToString(), picturePathBox.Text.ToString() };
             if (ProductValidator.boxAddValidation(boxData[0], boxData[1], boxData[2], boxData[3]))
                 CON.InsertPicture(boxData[0], boxData[1], boxData[2], File.ReadAllBytes(boxData[3]));
+            else
+                MessageBox.Show("Fill all fields", "Empty field", MessageBoxButtons.OK);
         }
 
         private static byte[] imageToByteArray(Image image)
@@ -55,7 +57,9 @@ namespace FinalApp
 
         private void formatBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Name*Price(Positive Natural Number)*Category*Product Image Path\n(Max Image Size: 420x420)", "Format", MessageBoxButtons.OK);
+            MessageBox.Show("Name*Price(Positive Natural Number)*Category*Product Image Path\n" +
+                "Max Image Size: 420x420\n" +
+                "Max size of Name, Price, Category is 14 characters.", "Format", MessageBoxButtons.OK);
         }
     }
 }

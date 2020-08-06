@@ -23,7 +23,7 @@ namespace FinalApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string dbPath = Application.StartupPath + @"\shop.accdb";
+            string dbPath = Application.StartupPath + @"\..\..\shop.accdb";
             if (File.Exists(dbPath))
             {
                 DBSQL.ConnectionString = dbPath;
@@ -56,6 +56,8 @@ namespace FinalApp
                     Visible = true;
                 }
             }
+            else
+                MessageBox.Show("Register or enter your name if you'r already registered.", "Empty field", MessageBoxButtons.OK);
         }
 
         private void supplierBtn_Click(object sender, EventArgs e)

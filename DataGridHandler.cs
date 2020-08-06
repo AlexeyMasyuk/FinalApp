@@ -7,6 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * Alexey Masyuk and Yulia Berkovich
+ * class to handle products table
+*/
+
 namespace FinalApp
 {
     class DataGridHandler
@@ -15,6 +20,7 @@ namespace FinalApp
         private Product[] in_products;
         private Product[] beforeCategorySort;
 
+        /* Cunstructor */
         public DataGridHandler(Product[] products, DataGridView dataGridView, ComboBox categoryBox)
         {
             DataGrid = dataGridView;
@@ -26,6 +32,10 @@ namespace FinalApp
             categoryBoxFill(categoryBox);
         }
 
+        /*
+         *  Method checkin all existing category,
+         *  adding them in to relevant box that can be sorted by.
+        */
         private void categoryBoxFill(ComboBox categoryBox)
         {
             ArrayList categoryList= new ArrayList();
@@ -34,6 +44,7 @@ namespace FinalApp
                     categoryBox.Items.Add(Products[i].Category);                  
         }
 
+        /* ----------- Get/Set ----------- */
         private DataGridView DataGrid
         {
             get { return in_dataGrid; }
@@ -44,19 +55,27 @@ namespace FinalApp
             get { return in_products; }
             set { in_products = value; }
         }
-
         private Product[] ProductsBeforeSort
         {
             get { return beforeCategorySort; }
             set { beforeCategorySort = value; }
         }
+        /* ------------------------------- */
 
+        /*
+         * Within class method, used in 'titleSet()' below.
+         * Add image column to table.
+         */
         private void addImgCol_changeTitleCell(int index)
         {
             DataGridViewImageColumn imageCol = new DataGridViewImageColumn();
             DataGrid.Columns.Add(imageCol);
         }
 
+        /*
+         * Within class method, used in cunstructor.
+         * initially sets all table titles.
+        */
         private void titleSet()
         {
             DataGrid.RowCount = Products.Length;
@@ -72,6 +91,10 @@ namespace FinalApp
             }
         }
 
+        /*
+         * Within class method, used in cunstructor or after sort.
+         * Filling the table with data stored in Products var.
+        */
         private void tableSet()
         {
             for(int i = 0; i < Products.Length; i++)
@@ -97,6 +120,9 @@ namespace FinalApp
             return -1;
         }
 
+        /*
+         * Within class method, used in 'titleSet()' below.
+        */
         private Product[] priceSort(string state)
         {
             Product[] newProducts = new Product[Products.Length];
@@ -158,12 +184,6 @@ namespace FinalApp
             List<Product> prod;
            
             return newProducts;
-        }
-
-        private void hideShowGrid()
-        {
-            DataGrid.Hide();
-            DataGrid.Show();
         }
 
         public void fromHighstPrice()

@@ -71,7 +71,7 @@ namespace FinalApp
                 if (value.Size.Width < 440 && value.Size.Height < 440)
                     product_image = value;
                 else
-                    throw new Exception("Wrong image Size "+value.Tag);
+                    throw new Exception("Wrong image Size ");
             }
         }
 
