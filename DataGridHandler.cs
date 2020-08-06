@@ -20,7 +20,7 @@ namespace FinalApp
         private Product[] in_products;
         private Product[] beforeCategorySort;
 
-        /* Cunstructor */
+        /* Constructor */
         public DataGridHandler(Product[] products, DataGridView dataGridView, ComboBox categoryBox)
         {
             DataGrid = dataGridView;
@@ -33,7 +33,8 @@ namespace FinalApp
         }
 
         /*
-         *  Method checkin all existing category,
+         * Within class method, used in Constructor.
+         *  Method checking all existing category,
          *  adding them in to relevant box that can be sorted by.
         */
         private void categoryBoxFill(ComboBox categoryBox)
@@ -73,7 +74,7 @@ namespace FinalApp
         }
 
         /*
-         * Within class method, used in cunstructor.
+         * Within class method, used in Constructor.
          * initially sets all table titles.
         */
         private void titleSet()
@@ -92,7 +93,7 @@ namespace FinalApp
         }
 
         /*
-         * Within class method, used in cunstructor or after sort.
+         * Within class method, used in Constructor or after sort.
          * Filling the table with data stored in Products var.
         */
         private void tableSet()
@@ -112,6 +113,10 @@ namespace FinalApp
             }
         }
 
+        /*
+         * Within class method, used in 'priceSort(string state)' and 'alphSort()'.
+         * generate new index from Products that not null
+        */
         private int notNullProduct()
         {
             for (int i = 0; i < Products.Length; i++)
@@ -121,7 +126,8 @@ namespace FinalApp
         }
 
         /*
-         * Within class method, used in 'titleSet()' below.
+         * Within class method, used in 'fromHighstPrice()' and 'fromLowPrice()' below.
+         * Sorting from High or Low price depends on 'state'.
         */
         private Product[] priceSort(string state)
         {
@@ -140,12 +146,16 @@ namespace FinalApp
                     }
                 }
                 newProducts[newProductIndex++] = Products[criticalIndex];
-                Products[criticalIndex] = null;
-                criticalIndex = notNullProduct();
+                Products[criticalIndex] = null;    // After product copied to new sorted array.
+                criticalIndex = notNullProduct();  // generate new index from Products that not null
             }
             return newProducts;
         }
 
+        /*
+         * Within class method, used in 'a_zSort()' below.
+         * Sorting from A - Z .
+        */
         private void alphSort()
         {
             Product[] newProducts = new Product[Products.Length];
@@ -164,46 +174,10 @@ namespace FinalApp
             Products = newProducts;
         }
 
-        private Product[] charSort()
-        {
-            Product[] newProducts = new Product[Products.Length];
-            CultureInfo culture = new CultureInfo("en-US", false);
-            int criticalIndex = 0, newProductIndex = 0;
-            for (int j = 0; j < Products.Length; j++)
-            {
-                for (int i = 0; i < Products.Length; i++)
-                {                   
-                    if (Products[i] != null)
-                        if (Char.ToUpper(Products[i].Name[0], culture).CompareTo(Char.ToUpper(Products[criticalIndex].Name[0], culture)) < 0)
-                            criticalIndex = i;
-                }
-                newProducts[newProductIndex++] = Products[criticalIndex];
-                Products[criticalIndex] = null;
-                criticalIndex = notNullProduct();
-            }
-            List<Product> prod;
-           
-            return newProducts;
-        }
-
-        public void fromHighstPrice()
-        {            
-            Products = priceSort("high");
-            tableSet();            
-        }
-
-        public void fromLowPrice()
-        {
-            Products = priceSort("low");
-            tableSet();
-        }
-
-        public void a_zSort()
-        {
-            alphSort();
-            tableSet();
-        }
-
+        /*
+         * Within class method, used in 'in_catSort(string category)' below.
+         * Method counting appearence of given category.
+        */
         private int categoryCount(string category)
         {
             int count = 0;
@@ -213,16 +187,16 @@ namespace FinalApp
             return count;
         }
 
-        private void gridClear()
-        {
-            DataGrid.Rows.Clear();
-        }
-
-        public void categorySort(string category)
+        /*
+         * Within class method, used in 'categorySort(string category)' below.
+         * Sorting table by given category, saving all Products from table and deleting all not chosen category.
+         * If 'All' selected retriving all deleted categories.
+        */
+        private void in_catSort(string category)
         {
             if (category != "All") 
             {
-                gridClear();
+                DataGrid.Rows.Clear();
                 int newIndex = 0;
                 if (ProductsBeforeSort != null)
                     Products = ProductsBeforeSort;
@@ -234,17 +208,37 @@ namespace FinalApp
                         newProducts[newIndex++] = Products[i];
                 Products = newProducts;
                 DataGrid.RowCount = Products.Length;
-                tableSet();
             }
             else if (category == "All" && ProductsBeforeSort != null) 
             {
-                gridClear();
+                DataGrid.Rows.Clear();
                 Products = ProductsBeforeSort;
                 ProductsBeforeSort = null;
                 DataGrid.RowCount = Products.Length;
-                tableSet();
             }
-
         }
+
+        /* ---- Sorting Methods ---- */
+        public void fromHighstPrice()
+        {
+            Products = priceSort("high");
+            tableSet();
+        }
+        public void fromLowPrice()
+        {
+            Products = priceSort("low");
+            tableSet();
+        }
+        public void a_zSort()
+        {
+            alphSort();
+            tableSet();
+        }
+        public void categorySort(string category)
+        {
+            in_catSort(category);
+            tableSet();
+        }
+        /* ------------------------- */
     }
 }
